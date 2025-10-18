@@ -3,9 +3,8 @@ import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import fetch from "node-fetch"; // 👈 Added for proxy route
-import connectDB, { sequelize } from "./src/db/index.js";
-import authRoutes from "./src/routes/auth.routes.js";
-import rodinRoutes from "./src/routes/rodin.routes.js";
+import authRoutes from "./routes/auth.routes.js";
+import rodinRoutes from "./routes/rodin.routes.js";
 
 const app = express();
 
