@@ -8,12 +8,9 @@
   ],
   "routes": [
     {
-      "src": "/routes/(.*)",
-      "dest": "index.js"
-    },
-    {
       "src": "/(.*)",
       "dest": "index.js"
     }
-  ]
+  ],
+  "installCommand": "npm install"
 }
