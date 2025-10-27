@@ -12,10 +12,17 @@ const RodinTask = sequelize.define(
     imageUrl: {
       type: DataTypes.STRING,
       allowNull: false,
+      validate: {
+        is: {
+          args: /^[a-zA-Z0-9\-]+\.(jpg|jpeg|png)$/i,
+          msg: "imageUrl must be a valid image file name (e.g., image.jpg, image.png)",
+        },
+      },
     },
     task_uuid: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
     },
     status: {
       type: DataTypes.STRING,
@@ -25,10 +32,25 @@ const RodinTask = sequelize.define(
       type: DataTypes.JSONB,
       allowNull: true,
     },
+    originalname: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    job_uuids: {
+      type: DataTypes.JSONB, // Store array of job UUIDs
+      allowNull: true,
+      defaultValue: [],
+    },
   },
   {
     timestamps: true,
     tableName: "rodin_tasks",
+    indexes: [
+      {
+        unique: true,
+        fields: ["task_uuid"],
+      },
+    ],
   }
 );
 
